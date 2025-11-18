@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUICKSITE - Miniature Websites in Minutes</title>
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/1zBYHj4n/quicksite-logo-xbg.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Light Theme Variables */
+            --bg-light: #FDFDFD;
+            --bg-card-light: #FAFAFA;
+            --text-primary-light: #1E0033;
+            --text-secondary-light: #4B4B4B;
+            --border-light: #E8E8E8;
+            --accent-light: #6A00F4;
+            
+            /* Dark Theme Variables */
+            --bg-dark: #0D0B1A;
+            --bg-card-dark: #1B1730;
+            --text-primary-dark: #FFFFFF;
+            --text-secondary-dark: #B8B4C9;
+            --accent-dark: #FF6A00;
+            
+            /* Gradient Colors */
+            --electric-blue: #00AEEF;
+            --vivid-purple: #6A00F4;
+            --hot-magenta: #E700C5;
+            --vibrant-orange: #FF6A00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background-color: var(--bg-dark);
+            color: var(--text-primary-dark);
+        }
+
+        body.light-mode {
+            background-color: var(--bg-light);
+            color: var(--text-primary-light);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background-color: var(--bg-dark);
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        body.light-mode header {
+            background-color: var(--bg-light);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--electric-blue), var(--vivid-purple), var(--hot-magenta), var(--vibrant-orange));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary-dark);
+            font-weight: 500;
+        }
+
+        body.light-mode .nav-links a {
+            color: var(--text-primary-light);
+        }
+
+        .nav-links a:hover {
+            color: var(--vibrant-orange);
+        }
+
+        body.light-mode .nav-links a:hover {
+            color: var(--vivid-purple);
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-primary-dark);
+        }
+
+        body.light-mode .theme-toggle {
+            color: var(--text-primary-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(0, 174, 239, 0.1), rgba(106, 0, 244, 0.1), rgba(231, 0, 197, 0.1), rgba(255, 106, 0, 0.1));
+        }
+
+        body.light-mode .hero {
+            background: linear-gradient(135deg, rgba(0, 174, 239, 0.05), rgba(106, 0, 244, 0.05), rgba(231, 0, 197, 0.05), rgba(255, 106, 0, 0.05));
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--electric-blue), var(--vivid-purple), var(--hot-magenta), var(--vibrant-orange));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-secondary-dark);
+        }
+
+        body.light-mode .hero p {
+            color: var(--text-secondary-light);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--vibrant-orange), var(--hot-magenta));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        body.light-mode .cta-button {
+            background: linear-gradient(135deg, var(--electric-blue), var(--vivid-purple));
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, var(--vibrant-orange), var(--hot-magenta));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        body.light-mode .section-title span {
+            background: linear-gradient(135deg, var(--electric-blue), var(--vivid-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Pricing Section */
+        .pricing-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .pricing-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            background-color: var(--bg-card-dark);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        body.light-mode .pricing-card {
+            background-color: var(--bg-card-light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-light);
+        }
+
+        .pricing-card.featured {
+            transform: scale(1.05);
+        }
+
+        body.light-mode .pricing-card.featured {
+            border-image: linear-gradient(135deg, var(--electric-blue), var(--vivid-purple), var(--hot-magenta), var(--vibrant-orange)) 1;
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--vibrant-orange), var(--hot-magenta));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        body.light-mode .price {
+            background: linear-gradient(135deg, var(--electric-blue), var(--vivid-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-body ul {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .card-body li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        body.light-mode .card-body li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .addon-price {
+            color: var(--vibrant-orange);
+            font-weight: 600;
+        }
+
+        body.light-mode .addon-price {
+            color: var(--vivid-purple);
+        }
+
+        .card-footer {
+            text-align: center;
+        }
+
+        /* Creative Uses Section */
+        .creative-section {
+            background-color: var(--bg-card-dark);
+        }
+
+        body.light-mode .creative-section {
+            background-color: var(--bg-card-light);
+        }
+
+        .wheel-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .wheel {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--vibrant-orange), var(--hot-magenta), var(--vivid-purple), var(--electric-blue));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 0 30px rgba(255, 106, 0, 0.3);
+            cursor: pointer;
+            transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        body.light-mode .wheel {
+            background: linear-gradient(135deg, var(--electric-blue), var(--vivid-purple), var(--hot-magenta), var(--vibrant-orange));
+            box-shadow: 0 0 30px rgba(106, 0, 244, 0.3);
+        }
+
+        .wheel-text {
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .wheel-pointer {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 30px solid var(--vibrant-orange);
+            z-index: 10;
+        }
+
+        body.light-mode .wheel-pointer {
+            border-top-color: var(--vivid-purple);
+        }
+
+        .use-case-display {
+            max-width: 600px;
+            text-align: center;
+            padding: 20px;
+            background-color: var(--bg-dark);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body.light-mode .use-case-display {
+            background-color: var(--bg-light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .use-case-text {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--text-primary-dark);
+        }
+
+        body.light-mode .use-case-text {
+            color: var(--text-primary-light);
+        }
+
+        /* Professional Websites Section */
+        .professional-section {
+            text-align: center;
+        }
+
+        .professional-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--vibrant-orange), var(--hot-magenta));
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+        }
+
+        body.light-mode .professional-btn {
+            background: linear-gradient(135deg, var(--electric-blue), var(--vivid-purple));
+        }
+
+        .professional-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card-dark);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        body.light-mode .modal-content {
+            background-color: var(--bg-light);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary-dark);
+        }
+
+        body.light-mode .close-modal {
+            color: var(--text-primary-light);
+        }
+
+        .modal-title {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+
+        .modal-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .modal-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-mode .modal-list li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .modal-price {
+            font-weight: 700;
+            color: var(--vibrant-orange);
+        }
+
+        body.light-mode .modal-price {
+            color: var(--vivid-purple);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--bg-card-dark);
+        }
+
+        body.light-mode .contact-section {
+            background-color: var(--bg-card-light);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 25px;
+            background-color: var(--bg-dark);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            min-width: 250px;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        body.light-mode .contact-item {
+            background-color: var(--bg-light);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--vibrant-orange);
+        }
+
+        body.light-mode .contact-icon {
+            color: var(--vivid-purple);
+        }
+
+        .contact-details h3 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .contact-details p {
+            color: var(--text-secondary-dark);
+        }
+
+        body.light-mode .contact-details p {
+            color: var(--text-secondary-light);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            background-color: #080616;
+            color: white;
+        }
+
+        body.light-mode footer {
+            background-color: var(--text-primary-light);
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer-logo-img {
+            height: 30px;
+            width: auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="https://i.postimg.cc/1zBYHj4n/quicksite-logo-xbg.png" alt="QUICKSITE Logo" class="logo-img">
+                    <div class="logo">QUICKSITE</div>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#creative">Uses</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-sun"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Miniature Websites in Minutes</h1>
+            <p>Get a custom, shareable website for any purpose in as little as 20 minutes. Perfect for personal messages, event promotions, creative expressions, and more!</p>
+            <a href="#pricing" class="cta-button">Get Your Quicksite</a>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Simple & Transparent <span>Pricing</span></h2>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <h3>Basic Quicksite</h3>
+                        <div class="price">KES 800</div>
+                        <p>Text-only website</p>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Single webpage</li>
+                            <li>Custom text content</li>
+                            <li>20-30 minutes delivery</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://instagram.com/_quick.site" target="_blank" class="cta-button">Order Now</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="card-header">
+                        <h3>Enhanced Quicksite</h3>
+                        <div class="price">KES 1000 +</div>
+                        <p>Base price with add-ons</p>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Basic Quicksite included</li>
+                            <li>Image/Icon embedding <span class="addon-price">@ KES 100</span></li>
+                            <li>Audio/Video embedding <span class="addon-price">@ KES 500</span></li>
+                            <li>Contact links/social media <span class="addon-price">@ KES 250</span></li>
+                            <li>1-2 hours delivery</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://instagram.com/_quick.site" target="_blank" class="cta-button">Order Now</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <h3>Multi-Page Site</h3>
+                        <div class="price">KES 1000 +</div>
+                        <p>Additional pages</p>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Basic Quicksite included</li>
+                            <li>Additional pages <span class="addon-price">+ KES 500/page</span></li>
+                            <li>Perfect for catalogues, books</li>
+                            <li>10-48 hours delivery</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://instagram.com/_quick.site" target="_blank" class="cta-button">Order Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Creative Uses Section -->
+    <section class="creative-section" id="creative">
+        <div class="container">
+            <h2 class="section-title">Creative <span>Use Cases</span></h2>
+            <div class="wheel-container">
+                <div class="wheel" id="ideaWheel">
+                    <div class="wheel-pointer"></div>
+                    <div class="wheel-text">Spin to reveal a quicksite secret</div>
+                </div>
+                <div class="use-case-display">
+                    <p class="use-case-text" id="useCaseText">Click the wheel to discover creative ways to use Quicksites!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Websites Section -->
+    <section class="professional-section">
+        <div class="container">
+            <h2 class="section-title">Need Something <span>More Advanced?</span></h2>
+            <p style="max-width: 700px; margin: 0 auto 30px; color: var(--text-secondary-dark);">For professional websites, portfolios, business pages, dashboards, and full-stack applications, we offer custom development services with premium quality and support.</p>
+            <button class="professional-btn" id="professionalBtn">View Professional Services</button>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In <span>Touch</span></h2>
+            <div class="contact-info">
+                <a href="https://wa.me/254110697638" target="_blank" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>WhatsApp</h3>
+                        <p>Send us a message</p>
+                    </div>
+                </a>
+                
+                <a href="mailto:wambugualexander09@gmail.com" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p>Send us an email</p>
+                    </div>
+                </a>
+                
+                <a href="https://instagram.com/_quick.site" target="_blank" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Instagram</h3>
+                        <p>Follow & DM us</p>
+                    </div>
+                </a>
+                
+                <a href="https://tiktok.com/@_quicksite" target="_blank" class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>TikTok</h3>
+                        <p>Follow & DM us</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo-container">
+                    <img src="https://i.postimg.cc/1zBYHj4n/quicksite-logo-xbg.png" alt="QUICKSITE Logo" class="footer-logo-img">
+                    <div class="logo">QUICKSITE</div>
+                </div>
+                <p>Miniature websites delivered in minutes</p>
+                <div class="social-links">
+                    <a href="https://wa.me/254110697638" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:wambugualexander09@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                    <a href="https://instagram.com/_quick.site" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="https://tiktok.com/@_quicksite" target="_blank" class="social-link"><i class="fab fa-tiktok"></i></a>
+                </div>
+                <p>&copy; 2025 QUICKSITE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Professional Services Modal -->
+    <div class="modal" id="professionalModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2 class="modal-title">Professional <span>Website Services</span></h2>
+            <ul class="modal-list">
+                <li><strong>Professional Websites</strong> (Portfolios, Business Pages, Dashboards) - 
+                    <span class="modal-price">Minimum KES 15,000</span><br>
+                    <small>Static sites with significant UI/UX improvements, adapted for both mobile and desktop</small>
+                </li>
+                <li><strong>Dynamic Websites</strong> with slight backend integration - 
+                    <span class="modal-price">Starting at KES 20,000</span><br>
+                    <small>Includes features like working 'leave a comment' textboxes</small>
+                </li>
+                <li><strong>Full Stack Systems/Apps</strong> - 
+                    <span class="modal-price">Starting at KES 150,000</span> (one-time commission)<br>
+                    <small>Fully functional scaffolded apps (not necessarily refined)</small>
+                </li>
+                <li><strong>Monthly Contracts</strong> - 
+                    <span class="modal-price">Recommended KES 40,000/month</span><br>
+                    <small>For ongoing development, upscaling & maintenance</small>
+                </li>
+            </ul>
+            <p><strong>Delivery Times:</strong></p>
+            <ul class="modal-list">
+                <li>Professional Websites: 2-4 weeks</li>
+                <li>Full Stack Systems: 6-12 months</li>
+            </ul>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="https://instagram.com/_quick.site" target="_blank" class="cta-button">Contact for Professional Services</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Set default to dark mode
+        document.body.classList.add('dark-mode');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('light-mode');
+            document.body.classList.toggle('dark-mode');
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+
+        // Creative Use Cases Wheel
+        const ideaWheel = document.getElementById('ideaWheel');
+        const useCaseText = document.getElementById('useCaseText');
+        
+        const useCases = [
+            "Didn't remember to carry a birthday card? We got you covered!",
+            "Don't know how best to tell them sorry? A quicksite will be perfect!",
+            "Want a different and creative way to advertise your event? Quicksite got you!",
+            "Thinking of a romantic surprise or a way to flirt and keep things interesting? We got you!",
+            "A simple calculator/timetable/program? We got you!",
+            "Need to share a formal letter or announcement in a modern way? Quicksite is perfect!",
+            "Have some pent up tension and don't want to send a freakishly long message? A website link will do just fine!",
+            "Want to create a digital condolence or congratulatory message? We can help!",
+            "Need a quick blog or story published online? Quicksite delivers in minutes!",
+            "Want to create a simple pricing calculator for your services? We can implement that!"
+        ];
+        
+        let currentUseCaseIndex = -1;
+        let isSpinning = false;
+        
+        ideaWheel.addEventListener('click', () => {
+            if (isSpinning) return;
+            
+            isSpinning = true;
+            
+            // Add spinning animation
+            ideaWheel.style.transform = 'rotate(1080deg)';
+            
+            // Get next use case in sequence
+            currentUseCaseIndex = (currentUseCaseIndex + 1) % useCases.length;
+            
+            // Update text after a delay
+            setTimeout(() => {
+                useCaseText.textContent = useCases[currentUseCaseIndex];
+                isSpinning = false;
+                ideaWheel.style.transform = 'rotate(0)';
+            }, 1000);
+        });
+
+        // Professional Services Modal
+        const professionalBtn = document.getElementById('professionalBtn');
+        const professionalModal = document.getElementById('professionalModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        professionalBtn.addEventListener('click', () => {
+            professionalModal.style.display = 'flex';
+        });
+        
+        closeModal.addEventListener('click', () => {
+            professionalModal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === professionalModal) {
+                professionalModal.style.display = 'none';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
